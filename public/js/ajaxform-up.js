@@ -9,28 +9,28 @@ $(function(){
         //if by ajax
         //check by ajax : validatepostajaxAction
         $.post(urlform,
-               { 'name' : $('input[name=name]').val() }, function(itemJson){
+               { 'name' : $(':input') }, function(itemJson){
                  
                 var error = false;
-                 
+                console.log(itemJson.name , "kek");
                 if (itemJson.name != undefined){
-                     
-                    if ($(".element_name ul").length == 0){
-                        //prepare ...
-                        $(".element_name").append("<ul></ul>");
+                    
+                    if ($(".modal-body ul").length == 0){
+
+                        $(".modal-body").append("<ul></ul>");
                     }
                      
                     for(var i=0;i<itemJson.name.length;i++)
                     {
-                       if ($(".element_name ul").html().substr(itemJson.name[i]) == '')
-                            $(".element_name ul").append('<li>'+itemJson.name[i]+'</li>');
+                       if ($(".modal-body ul").html().substr(itemJson.name[i]) == '')
+                            $(".modal-body ul").append('<li>'+itemJson.name[i]+'</li>');
                     }
                      
                     error = true;
                 }
                  
                 if (!error){
-                    $("#winpopup").dialog('close');
+                    $("#winpopup").modal('hide');
                      
                     if (itemJson.success == 1){
                         alert('Data saved');   

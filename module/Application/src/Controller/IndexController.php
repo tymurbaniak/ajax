@@ -58,7 +58,7 @@ class IndexController extends AbstractActionController
     
     public function validatepostajaxAction()
     {
-        $form    = $this->getForm();
+        $form    = new AddToGroupForm();
         $request = $this->getRequest();
         $response = $this->getResponse();
         
